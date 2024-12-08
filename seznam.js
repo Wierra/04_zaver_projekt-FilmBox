@@ -4,10 +4,10 @@ const filmy = [
 		nazev: 'Pelíšky',
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/165/059/165059101_56d52a.jpg',
-			sirka: 663,
-			vyska: 909,
+			sirka: 420,
+			vyska: 592,
 		},
-		ochutnavka: 'České drama z období 1968.',
+		ochutnavka: 'České úsměvné drama z období 1968.',
 		popis:
 			'A je tu zpět jedna z nejúspěšnějších českých filmových komedií od renomovaných tvůrců - režiséra J. Hřebejka a scenáristy P. Jarchovského s řadou skvělých herců. Vraťme se tedy s oblíbenými postavami k rodinným rituálům, láskám a trapasům odehrávajícím se na sklonku šedesátých let minulého století v jedné pražské čtvrti. Jemná poetika a humorná nadsázka jsou charakteristické pro vyprávění životních osudů tří generací mužů a žen ve zvláštním období našich dějin v roce 1968… V jedné dvoupatrové vile tu žijí dvě rodiny - Šebkovi a Krausovi. Otec Šebek (M. Donutil), prostoduchý, ale dobrácký důstojník z povolání, je zastáncem panujícího režimu a stejně vehementně obhajuje i vlastní neomylnost v roli hlavy rodiny. Elegantní otec Kraus (J. Kodet), bývalý odbojář s trpkou válečnou zkušeností, je naopak zarytým opozičníkem. Také on je přesvědčený o tom, že má za všech okolností pravdu - není proto divu, že se tihle dva nemají zrovna v lásce. Jejich děti - gymnazista Michal (M. Beran) a jeho spolužačka Jindřiška (K. Nováková) - spolu vycházejí docela dobře. I když Michal by byl rád, kdyby ho jeho sousedka brala trochu víc na vědomí. Ta má ale oči pro jiného. Nezbývá mu tedy nic jiného, než aby smutně přihlížel, jak mu jeho první milostné body krade spolužák Elien (O. Brousek). U Šebků a Krausů se zatím střídají rodinné návštěvy, ve vší obřadnosti se tu slaví Vánoce, svatba i nečekaný, bolestný pohřeb. Do zabydlených domácností vtrhnou i některé novodobé vymoženosti v podobě umělohmotných lžiček, nerozbitných sklenic i podivných her pro statečné pionýry. Mládež zatím pokukuje po lákadlech světa kapitalismu a snaží se žít svůj vlastní, na rodičovských autoritách a "velké" historii nezávislý život. V soukromí rodinných pelíšků se tak čas od času odehrají malá dramata názorů a vztahů, která se v paměti jejich účastníků otisknou už nejspíš navždy… (csfd.cz, Česká televize)',
 		premiera: '2019-04-08',
@@ -18,7 +18,7 @@ const filmy = [
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/164/987/164987945_c36f6f.jpg',
 			sirka: 420,
-			vyska: 595,
+			vyska: 592,
 		},
 		ochutnavka: 'Český krimi thriller s Karlem Rodenem.',
 		popis:
@@ -31,7 +31,7 @@ const filmy = [
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/158/280/158280506_017bab.jpg',
 			sirka: 420,
-			vyska: 594,
+			vyska: 592,
 		},
 		ochutnavka: 'Romantické Sci-Fi z blízké budoucnosti',
 		popis:
@@ -43,8 +43,8 @@ const filmy = [
 		nazev: 'RRRrrrr!!!',
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/162/393/162393560_2aca32.jpg',
-			sirka: 663,
-			vyska: 919,
+			sirka: 420,
+			vyska: 592,
 		},
 		ochutnavka: 'Francouzská komedie.',
 		popis:
@@ -57,7 +57,7 @@ const filmy = [
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/163/781/163781903_f1e217.png',
 			sirka: 420,
-			vyska: 593,
+			vyska: 592,
 		},
 		ochutnavka: 'Česká komedie.',
 		popis:
@@ -70,7 +70,7 @@ const filmy = [
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/166/002/166002844_2e67c1.jpg',
 			sirka: 420,
-			vyska: 622,
+			vyska: 592,
 		},
 		ochutnavka: 'Americký thriller o IT pracovnici s agorafobií.',
 		popis:
@@ -82,8 +82,8 @@ const filmy = [
 		nazev: 'Petrolejové lampy',
 		plakat: {
 			url: 'https://image.pmgstatic.com/cache/resized/w663/files/images/film/posters/163/486/163486952_22889f.jpg',
-			sirka: 663,
-			vyska: 937,
+			sirka: 420,
+			vyska: 492,
 		},
 		ochutnavka: 'Sugestivní filmové drama podle románu Jaroslava Havlíčka.',
 		popis:
@@ -103,4 +103,37 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+
+	{
+		id: 'vsechno-nebo-nic',
+		nazev: 'Všechno nebo nic',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/161/266/161266257_8cb183.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Romantická komedie o dvou kamarádka, Lindě a Vandě.',
+		popis:
+			'Linda a Vanda jsou pohledné třicítky, nerozlučné kamarádky a taky spolumajitelky malého knihkupectví v centru města. Linda je rozvedená, vzdělaná, praktická, má malou dceru a pocit zodpovědnosti. Ten naopak chybí Vandě, svobodné, veselé, nezávislé krásce, která sice muže přitahuje jako magnet, ale její živelnosti žádný nestačí. A tak hledá toho pravého. Aktivně. V obchodě s nimi pracuje Edo, který taky touží po lásce na věky věků, ale jako plachý, citlivý a introvertní gay to má těžké. Životy téhle trojice nakonec stejně zamotá několik mužů. Lindě charismatický developer Jakub, který není tím, kým se zdá být. Vandě bývalý profesor z vysoké školy Aladar, jehož je ochotná si vzít, "protože ji má rád". A Edo se už zase přizpůsobuje dalšímu příteli, Leovi... Nakonec ale všechno dopadne úplně jinak, než všichni čekali... (csfd.cz, )',
+		premiera: '2017-01-12',
+	},
 ]
+
+const listFilmEl = document.querySelector('#seznam-filmu')
+
+if (listFilmEl !== null) {
+	filmy.forEach ((film) => {
+		listFilmEl.innerHTML += `
+			<div class="col">
+				<div class="card">
+					<img src=${film.plakat.url} width=${film.plakat.sirka} height=${film.plakat.vyska} class="card-img-top" alt="plakát"/>
+
+					<div class="card-body">
+						<h5 class="card-title">${film.nazev}</h5>
+						<p class="card-text">${film.ochutnavka}</p>
+						<a href="film.html#${film.id}" class="btn btn-primary">Přehrát</a>
+					</div>
+				</div>
+			</div>`;
+	});
+}

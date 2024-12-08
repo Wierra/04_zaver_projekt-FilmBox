@@ -103,4 +103,126 @@ const filmy = [
 			'Na zámek v podhůří Krkonoš přijíždí jeho nový majitel Štěpán se svojí snoubenkou, krásnou komtesou Blankou, a mladším bratrem Adamem. Cestou kočár nešťastně srazí kolemjdoucí dívku, Adam jí pomůže a ona se do něj zamiluje. Na zámku Adam objeví starou vlašskou knihu, která by měla obsahovat cestu k pokladům. Tajemné značky vlašské knihy však nedokáže vyluštit ani národopisec Jiráček, který v kraji sbírá pověsti a nevychází z údivu nad tím, že zdejší lidé stále věří v Krakonoše. Na zámku se objeví záhadný cizinec a nabídne Štěpánovi, že jej k pokladu za určitých podmínek dovede. Výprava do hor může začít. Naplní se Liduščina láska k Adamovi? Jakou záhadu skrývá starý obraz na zámku Hůrka a co strašlivého se v horách kdysi odehrálo? A kdo je vlastně Krakonoš a jaké je jeho největší tajemství? (csfd.cz, Česká televize)',
 		premiera: '2022-12-24',
 	},
+	{
+		id: 'vsechno-nebo-nic',
+		nazev: 'Všechno nebo nic',
+		plakat: {
+			url: 'https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/161/266/161266257_8cb183.jpg',
+			sirka: 420,
+			vyska: 592,
+		},
+		ochutnavka: 'Romantická komedie o dvou kamarádka, Lindě a Vandě.',
+		popis:
+			'Linda a Vanda jsou pohledné třicítky, nerozlučné kamarádky a taky spolumajitelky malého knihkupectví v centru města. Linda je rozvedená, vzdělaná, praktická, má malou dceru a pocit zodpovědnosti. Ten naopak chybí Vandě, svobodné, veselé, nezávislé krásce, která sice muže přitahuje jako magnet, ale její živelnosti žádný nestačí. A tak hledá toho pravého. Aktivně. V obchodě s nimi pracuje Edo, který taky touží po lásce na věky věků, ale jako plachý, citlivý a introvertní gay to má těžké. Životy téhle trojice nakonec stejně zamotá několik mužů. Lindě charismatický developer Jakub, který není tím, kým se zdá být. Vandě bývalý profesor z vysoké školy Aladar, jehož je ochotná si vzít, "protože ji má rád". A Edo se už zase přizpůsobuje dalšímu příteli, Leovi... Nakonec ale všechno dopadne úplně jinak, než všichni čekali... (csfd.cz, )',
+		premiera: '2017-01-12',
+	},
 ]
+
+const selectFilmId = window.location.hash.slice(1)
+const selectFilm = filmy.find((film) => film.id === selectFilmId)
+const detailFilm = document.querySelector('#detail-filmu')
+
+
+const dayPremiera = dayjs(selectFilm.premiera).format('DD.MM.YYYY')
+const dayDiffPremiera = dayjs(selectFilm.premiera).diff(dayjs(), 'days')
+const numberOfDaysPremiera = dayDiffPremiera > 0 ? ` je za ${dayDiffPremiera} dní` : `bylo před ${Math.abs(dayDiffPremiera)} dny`
+
+detailFilm.innerHTML += `
+	<div class="row g-0">
+				<div class="col-md-5">
+					<img src=${selectFilm.plakat.url}
+						alt="plakát"
+						class="img-fluid rounded-start"
+						width=${selectFilm.plakat.sirka}
+						height=${selectFilm.plakat.vyska}
+					/>
+				</div>
+				<div class="col-md-7">
+					<div class="card-body">
+						<h5 class="card-title">${selectFilm.nazev}</h5>
+						<p class="card-text">${selectFilm.popis}</p>
+						<p class="card-text">
+							<small class="text-muted" id="premiera">Premiéra 
+								<strong>${dayPremiera}</strong>, což ${numberOfDaysPremiera}.</small>
+						</p>
+						<h6>Hodnocení</h6>
+						<div class="stars">
+							<button class="far fa-star button-star" data-mdb-toggle="tooltip" title="Nic moc">
+								1
+							</button>
+							<button class="far fa-star button-star" data-mdb-toggle="tooltip" title="Ucházející">
+								2
+							</button>
+							<button class="far fa-star button-star" data-mdb-toggle="tooltip" title="Dobrý">
+								3
+							</button>
+							<button class="far fa-star button-star" data-mdb-toggle="tooltip" title="Skvělý">
+								4
+							</button>
+							<button class="far fa-star button-star" data-mdb-toggle="tooltip" title="Úžasný">
+								5
+							</button>
+						</div>
+
+						<h6 class="mt-4">Poznámka</h6>
+						<form id="note-form">
+							<div class="row">
+								<div class="col-md-6 col-lg-7 col-xl-8 mb-2">
+									<div class="form-outline">
+										<textarea class="form-control" id="message-input" rows="4"></textarea>
+										<label class="form-label" for="message-input">Text poznámky</label>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-5 col-xl-4">
+									<div class="form-check d-flex justify-content-center mb-2">
+										<input class="form-check-input me-2 mb-2" type="checkbox" value="" id="terms-checkbox"/>
+										<label class="form-check-label" for="terms-checkbox">
+											Souhlasím se všeobecnými podmínky užívání.
+										</label>
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">
+										Uložit
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>`
+
+
+//hodnocení - hvězdy
+const starsEl = document.querySelectorAll(".button-stars")
+let selectRating = 0
+
+const ratingStars = (rating) => {
+	starsEl.forEach((star, index) => {
+		if (index < rating) {
+			star.classList.remove('far');
+			star.classList.add('fas');
+		} else {
+			star.classList.remove('fas');
+			star.classList.add('far');
+		}
+	})
+}
+
+const hoverStar = (e) => {
+	const hoverRating = Number(e.target.textContent);
+	ratingStars(hoverRating);
+}
+
+const selectStarClick = (e) => {
+	selectRating = Number(e.target.textContent);
+	ratingStars(selectRating);
+}
+
+const resetStar = () => {
+	ratingStars(selectRating);
+}
+
+starsEl.forEach((star) => {
+	star.addEventListerner("mouseenter", hoverStar);
+	star.addEventListerner("click", selectStarClick);
+	star.addEventListerner("mouseleave", resetStar);
+})
