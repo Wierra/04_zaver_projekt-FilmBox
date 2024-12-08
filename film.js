@@ -253,16 +253,3 @@ const feedBack = (e) => {
 }
 
 noteForm.addEventListener("submit", feedBack)
-
-//hodnocení - nápověda Michal
-//hvezdy.forEach(hvezda, index) => {
-//	if (index < pocetHvezd) {
-//		hvezda.classList.add()
-//	}
-//}
-//        0 1 2  index < pocetHvezd
-//          hvezdicky.forEach((h, i) => {          
-//			if(index < pocetHvezd) {          
-//				h.classList.add()         
-//			}         
-//		})
