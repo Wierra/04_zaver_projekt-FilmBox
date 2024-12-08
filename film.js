@@ -176,9 +176,7 @@ detailFilm.innerHTML += `
 								<div class="col-md-6 col-lg-5 col-xl-4">
 									<div class="form-check d-flex justify-content-center mb-2">
 										<input class="form-check-input me-2 mb-2" type="checkbox" value="" id="terms-checkbox"/>
-										<label class="form-check-label" for="terms-checkbox">
-											Souhlasím se všeobecnými podmínky užívání.
-										</label>
+										<label class="form-check-label" for="terms-checkbox">Souhlasím se všeobecnými podmínky užívání.</label>
 									</div>
 									<button type="submit" class="btn btn-primary btn-block">
 										Uložit
@@ -191,18 +189,18 @@ detailFilm.innerHTML += `
 			</div>`
 
 
-//hodnocení - hvězdy
-const starsEl = document.querySelectorAll(".button-stars")
+//hodnocení - hvězdičky
+const starsEl = document.querySelectorAll(".button-star")
 let selectRating = 0
 
 const ratingStars = (rating) => {
 	starsEl.forEach((star, index) => {
 		if (index < rating) {
-			star.classList.remove('far');
-			star.classList.add('fas');
+			star.classList.remove("far");
+			star.classList.add("fas");
 		} else {
-			star.classList.remove('fas');
-			star.classList.add('far');
+			star.classList.remove("fas");
+			star.classList.add("far");
 		}
 	})
 }
@@ -217,12 +215,54 @@ const selectStarClick = (e) => {
 	ratingStars(selectRating);
 }
 
+//index 0 1 2 (tři hvezdy); index < pocetHvezd
+
 const resetStar = () => {
 	ratingStars(selectRating);
 }
 
 starsEl.forEach((star) => {
-	star.addEventListerner("mouseenter", hoverStar);
-	star.addEventListerner("click", selectStarClick);
-	star.addEventListerner("mouseleave", resetStar);
+	star.addEventListener("mouseenter", hoverStar);
+	star.addEventListener("click", selectStarClick);
+	star.addEventListener("mouseleave", resetStar);
 })
+
+
+//poznámka k hodnocení
+const noteForm = document.querySelector("#note-form")
+
+const feedBack = (e) => {
+	e.preventDefault();
+	const inputEl = document.querySelector("#message-input");
+
+	const message = inputEl.value;
+	if (message === "") {
+		inputEl.classList.add("is-invalid");
+		inputEl.focus();
+		return;
+	}
+	const termsCheckbox = document.querySelector("#terms-checkbox");
+	
+	if (termsCheckbox.checked === false) {
+		termsCheckbox.classList.add("is-invalid")
+		termsCheckbox.focus();
+		return;
+	}
+	noteForm.innerHTML += `
+		<p class="card-text">${message}</p>`;
+}
+
+noteForm.addEventListener("submit", feedBack)
+
+//hodnocení - nápověda Michal
+//hvezdy.forEach(hvezda, index) => {
+//	if (index < pocetHvezd) {
+//		hvezda.classList.add()
+//	}
+//}
+//        0 1 2  index < pocetHvezd
+//          hvezdicky.forEach((h, i) => {          
+//			if(index < pocetHvezd) {          
+//				h.classList.add()         
+//			}         
+//		})
