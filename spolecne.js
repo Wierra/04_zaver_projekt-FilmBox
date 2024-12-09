@@ -11,4 +11,3 @@ menuButton.addEventListener("click", () => {
     }
 }
 )
-

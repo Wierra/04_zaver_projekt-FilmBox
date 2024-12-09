@@ -122,6 +122,7 @@ const selectFilmId = window.location.hash.slice(1)
 const selectFilm = filmy.find((film) => film.id === selectFilmId)
 const detailFilm = document.querySelector('#detail-filmu')
 
+console.log(selectFilm)
 
 const dayPremiera = dayjs(selectFilm.premiera).format('DD.MM.YYYY')
 const dayDiffPremiera = dayjs(selectFilm.premiera).diff(dayjs(), 'days')
@@ -189,7 +190,7 @@ detailFilm.innerHTML += `
 			</div>`
 
 
-//hodnocení - hvězdičky
+//hodnocení - hvězdičky //nápověda Michal - index 0 1 2 (tři hvezdy); index < pocetHvezd
 const starsEl = document.querySelectorAll(".button-star")
 let selectRating = 0
 
@@ -215,8 +216,6 @@ const selectStarClick = (e) => {
 	ratingStars(selectRating);
 }
 
-//index 0 1 2 (tři hvezdy); index < pocetHvezd
-
 const resetStar = () => {
 	ratingStars(selectRating);
 }
@@ -241,15 +240,38 @@ const feedBack = (e) => {
 		inputEl.focus();
 		return;
 	}
+
 	const termsCheckbox = document.querySelector("#terms-checkbox");
-	
-	if (termsCheckbox.checked === false) {
-		termsCheckbox.classList.add("is-invalid")
+		if (termsCheckbox.checked === false) {
+		termsCheckbox.classList.add("is-invalid");
 		termsCheckbox.focus();
 		return;
 	}
-	noteForm.innerHTML += `
+	noteForm.innerHTML = `
 		<p class="card-text">${message}</p>`;
 }
 
-noteForm.addEventListener("submit", feedBack)
+noteForm.addEventListener('submit', feedBack)
+
+//přehraváč - vlastní ovládací prvky
+const playEl = document.querySelector('#prehravac')
+const panelEl = playEl.querySelector('.player-controls')
+const videoEl = playEl.querySelector('video')
+
+//tlačítko play
+playEl.querySelector('.play').addEventListener('click', () => {
+	videoEl.play();
+})
+
+videoEl.addEventListener('playing', () => {
+	playEl.classList.add('playing');
+})
+
+//tlačítko pause
+playEl.querySelector('.pause').addEventListener('click', () => {
+	videoEl.pause();
+})
+
+videoEl.addEventListener('pause', () => {
+	playEl.classList.remove('playing');
+})
