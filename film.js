@@ -257,8 +257,9 @@ noteForm.addEventListener('submit', feedBack)
 const playEl = document.querySelector('#prehravac')
 const panelEl = playEl.querySelector('.player-controls')
 const videoEl = playEl.querySelector('video')
+const currentTimeEl = playEl.querySelector('.current-time')
 
-//tlačítko play
+//oživení tlačítka "play"
 playEl.querySelector('.play').addEventListener('click', () => {
 	videoEl.play();
 })
@@ -267,11 +268,35 @@ videoEl.addEventListener('playing', () => {
 	playEl.classList.add('playing');
 })
 
-//tlačítko pause
+//oživení tlačítka pro zastavení "pause"
 playEl.querySelector('.pause').addEventListener('click', () => {
 	videoEl.pause();
 })
 
 videoEl.addEventListener('pause', () => {
 	playEl.classList.remove('playing');
+})
+
+//aktuální čas přehrávání
+videoEl.addEventListener('timeupdate', () => {
+	const seconds = Math.round(videoEl.currentTime);
+	const realSeconds = (seconds % 60).toString().padStart(2,'0');
+	const realMinutes = Math.round(seconds / 60).toString().padStart(2, '0');
+	currentTimeEl.textContent = `${realMinutes}:${realSeconds}`;
+})
+
+//spuštění a zastavení mezerníkem
+document.addEventListener('keydown', (event) => {
+	if (event.code === 'Space' &&
+		event.target.tagName !== 'TEXTAREA' &&
+		event.target.tagName !== 'INPUT' &&
+		event.target.tagName !== 'BUTTON'
+	  ) {
+		event.preventDefault();
+		if (playEl.classList.contains('playing')) {
+			videoEl.pause();
+		} else {
+			videoEl.play();
+		}
+	  }
 })
