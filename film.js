@@ -287,16 +287,30 @@ videoEl.addEventListener('timeupdate', () => {
 
 //spuštění a zastavení mezerníkem
 document.addEventListener('keydown', (event) => {
-	if (event.code === 'Space' &&
-		event.target.tagName !== 'TEXTAREA' &&
+	if (event.code === 'Space' && 
+		event.target.tagName !== 'TEXTAREA' && 
 		event.target.tagName !== 'INPUT' &&
-		event.target.tagName !== 'BUTTON'
-	  ) {
-		event.preventDefault();
+		event.target.tagName !== 'BUTTON')
+		{	event.preventDefault();
 		if (playEl.classList.contains('playing')) {
 			videoEl.pause();
 		} else {
 			videoEl.play();
 		}
-	  }
+	}
 })
+
+//extra bonus - zobrazit/skrýt ovládací panel
+const showPanel = () => {
+	clearTimeout(inactive);
+	inactive = setTimeout(hidePanel, 3000);
+	panelEl.classList.remove('hidden');
+}
+
+const hidePanel = () => {
+	panelEl.classList.add('hidden');
+}
+
+let inactive
+document.addEventListener('keydown', showPanel)
+document.addEventListener('mousemove', showPanel)
